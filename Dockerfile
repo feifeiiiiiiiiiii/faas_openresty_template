@@ -15,7 +15,8 @@ USER app
 ENV PATH=$PATH:/home/app/.local/bin
 
 WORKDIR /home/app/
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
+COPY default.conf /etc/nginx/conf.d/default.conf
 RUN mkdir -p function
 
 WORKDIR /home/app/function/
@@ -27,7 +28,7 @@ USER root
 ENV upstream_url="http://localhost:80"
 ENV mode="http"
 
-ENV fprocess="/etc/nginx/sbin/openresty"
+ENV fprocess="/usr/local/openresty/bin/openresty"
 
 HEALTHCHECK --interval=1s CMD [ -e /tmp/.lock ] || exit 1
 
