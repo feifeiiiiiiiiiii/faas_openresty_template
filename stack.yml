@@ -1,0 +1,10 @@
+
+provider:
+  name: faas
+  gateway: 
+
+functions:
+  fn-test:
+    lang: go
+    handler: ./fn1
+    image: alexellis2/fn1:0.4
